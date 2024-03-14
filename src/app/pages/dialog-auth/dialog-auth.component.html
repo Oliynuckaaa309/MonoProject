@@ -1,0 +1,74 @@
+<div class="overlay" >
+    <div class = "modal">
+      <button class="close-btn" (click)="closeWindow()">X</button>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" *ngIf="isUserLogin ">
+        <h1 class="title">Вхід в кабінет</h1>
+        <div class="input-field">
+          <mat-form-field appearance="outline" mat-primary="white">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput
+                   placeholder="pat@example.com" formControlName="email">
+          </mat-form-field>
+          <mat-form-field appearance="outline" >
+            <mat-label >Ваш пароль</mat-label >
+            <input type="password" matInput
+
+                 formControlName="password" >
+          </mat-form-field>
+          <button mat-button class="btn"(click)="logIn()" [disabled]="authForm.invalid"  >Увійти в кабінет</button>
+          <button class="register" (click)="registerUser()">Зареєструватися</button>
+        </div>
+</form>
+
+
+<form *ngIf="!isUserLogin && logUser" class="form-register" [formGroup]="registerForm">
+  <h1 class="title">Зареєструватися</h1>
+  <div class="user-name">
+    <mat-form-field appearance="outline" mat-primary="white" class='register-field' >
+      <mat-label>Ваше ім'я </mat-label>
+      <input type="text" matInput
+             formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" mat-primary="white" class='register-field'>
+      <mat-label>Ваше прізвище</mat-label>
+      <input type="text" matInput
+             formControlName="lastName">
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="outline" mat-primary="white" class="user-info">
+    <mat-label>Ваш телефон</mat-label>
+    <input type="text" matInput
+          formControlName="phoneNumber">
+  </mat-form-field>
+  <mat-form-field appearance="outline" mat-primary="white" class="user-info">
+    <mat-label>Ваш email</mat-label>
+    <input type="text" matInput
+          formControlName="email">
+  </mat-form-field>
+  <div class="user-password user-name">
+    <mat-form-field appearance="outline" mat-primary="white" class='register-field'>
+      <mat-label>Ваш пароль</mat-label>
+      <input (input)="checkConfirmedPassword()" type="password" matInput
+            formControlName="password">
+    </mat-form-field>
+    <mat-form-field appearance="outline" mat-primary="white" class='register-field'>
+      <mat-label>Повторіть пароль</mat-label>
+      <input type="password" matInput (input)="checkConfirmedPassword()"
+            formControlName="confirmationPassword">
+    </mat-form-field>
+
+
+  </div>
+  <mat-error class="error" *ngIf="checkVisibilityError('confirmationPassword','matchError')">Паролі не збігаються</mat-error>
+  <button mat-button class="btn" (click)="registerUsers()" >Зареєструватися</button>
+  <div class="register-btn">
+    <p>Вже зареєстровані?</p>
+    <button class="enter-profile" (click)="returnLoginPage()">Увійти</button>
+  </div>
+
+
+</form>
+
+</div>
+</div>
+

@@ -1,0 +1,57 @@
+<div class="admin-result">
+    <button class="add-category" (click)="addProducts()">Додати продукт</button>
+    <ng-container *ngIf="addProduct" class="add-item">
+        <form  class="action-item" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <select formControlName="category" class="first-product" placeholder="Категорія" id="name" >
+                <option [ngValue]="category.title" *ngFor="let category of adminCategory">{{category.title}}</option>
+              </select>
+            <input type="text" class="second-product" placeholder="Назва"  id="name" formControlName="name" >
+            <input type="text" class="second-product" placeholder="Шлях" id="path" formControlName="path" >
+            <input type="text" class="first-product" placeholder="Опис" id="path" formControlName="description" >
+            <input type="number" class="second-product" placeholder="Вага" id="path" formControlName="weight" >
+            <input type="number" class="second-product" placeholder="Ціна" id="path" formControlName="price" >
+
+            <ng-container *ngIf="!isUploaded"> <input class="first-product" type="file" class="input-form"  id="file" aria-label="Вибрати файл" (change)="upload($event)"  formControlName="imagePath"></ng-container>
+            <ng-container *ngIf="isUploaded">
+                <img [src]="valueByControl('imagePath')" alt="" height="100px"><br/>
+                </ng-container>
+                <div >
+                    <button class="btn-product" type="submit" *ngIf="!isEdit" (click)="createProduct()"  [disabled]="productForm.invalid">Зберегти</button>
+                    <button class="btn-product" type="submit"  *ngIf="isEdit" (click)="saveChanges()" [disabled]="productForm.invalid">Редагувати</button>
+                </div>
+           
+        </form>
+    </ng-container>
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Категорія</th>
+                <th>Назва</th>
+                <th>Опис</th>
+                <th>Вага</th>
+                <th>Ціна</th>
+                <th>Картинка</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let product of adminProducts; let i = index;">
+                <td>{{i+1}}.</td>
+                <td>{{product.category}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.weight}}</td>
+                <td>{{product.price}}</td>
+                <td>
+                    <img src={{product.img}} alt="">
+                </td>
+                <td class="btn">
+                    <div><button class="action-button" (click)="editProduct(product)" >Редагувати</button></div>
+                    <div><button   class="action-button" (click)="deleteProduct(product.id)">Видалити</button></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

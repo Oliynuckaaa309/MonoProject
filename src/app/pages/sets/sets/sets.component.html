@@ -1,0 +1,32 @@
+<section>
+    <div class="main-wrap">
+        <div class="product-wrap">
+        <div class="product-title">
+            <h1>Сети</h1>
+            </div></div>
+        <div class="container">
+            <div class="product-item" *ngFor="let itemSetu of setu">
+                <a [routerLink]="['/product', itemSetu.path]">
+                <div class="for-img">
+                    <img src={{itemSetu.img}} alt="">
+                </div>
+                <h2>{{itemSetu.name}}</h2>
+                <p class="roll-description">{{itemSetu.description}}</p>
+                <h4 class="product-weight">{{itemSetu.weight}} г</h4>
+            </a>
+                <div class="btn">
+                    <div class="product-price"><b>{{itemSetu.price * itemSetu.count}}</b> грн</div>
+                    <div class="btn-order">
+                        <button class="count-btn" (click)="productCount(itemSetu, false)">-</button>
+                        <input type="text" class="count" value="1" [value]="itemSetu.count">
+                        <button class="count-btn" (click)="productCount(itemSetu, true)">+</button>
+                    </div>
+                    <button class="order" (click)="addToBasket(itemSetu)">ЗАМОВИТИ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

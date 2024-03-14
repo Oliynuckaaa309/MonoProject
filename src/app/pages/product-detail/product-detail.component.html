@@ -1,0 +1,28 @@
+<section>
+    <div class="main-wrap">
+        <div class="container">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src={{productDetails.img}} alt="">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">
+                    <p class="product-name">{{productDetails.name}}</p>
+                    <p><span>Склад:</span> {{productDetails.description}}</p>
+                    <p> <span>Вага: </span>{{productDetails.weight}} г.</p></div>
+                    <div class="price-and-buttons">
+                    <p> <b>{{productDetails.price * productDetails.count}}</b> грн</p>
+                    <div class="btn-order">
+                          <button (click)="productCount(productDetails, false)" class="count-btn">-</button>
+                        <input type="text" class="count" [value]="productDetails.count" >
+                        <button (click)="productCount(productDetails, true)" class="count-btn">+</button> 
+                    </div> 
+                    <button class="order" (click)="addToBasket(productDetails)">ЗАМОВИТИ</button>
+                    </div>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+   
+</section>

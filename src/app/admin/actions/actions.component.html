@@ -1,0 +1,45 @@
+<div class="admin-result">
+    <button class="add-actions" (click)="addActions()">Додати акцію</button>
+    <ng-container *ngIf="addAction" class="add-item">
+        <form id="actionForm" class="action-item" [formGroup]="actionForm" (ngSubmit)="onSubmit()">
+            <input type="text" placeholder="Назва" id="name" formControlName="title" />
+            <input type="text" placeholder="Заголовок" id="path" formControlName="main_title" />
+            <input type="text" placeholder="Шлях" id="path" formControlName="path" />
+            <input type="text" placeholder="Опис" id="description" formControlName="description">
+            <ng-container *ngIf="!isUploaded"> <input type="file" id="file" aria-label="Вибрати файл"
+                    (change)="upload($event)" formControlName="image"></ng-container>
+            <ng-container *ngIf="isUploaded">
+                <img [src]="valueByControl('image')" alt="" height="100px"><br />
+            </ng-container>
+            <button type="submit" *ngIf="!isEdit" (click)="createDiscount()" class="btn-save">Зберегти</button>
+            <button type="submit" *ngIf="isEdit" (click)="saveChanges()" class="btn-save">Редагувати</button>
+        </form>
+    </ng-container>
+    <table>
+        <thead>
+            <tr>
+                <th>Назва</th>
+                <th>Заголовок</th>
+                <th>Шлях</th>
+                <th>Опис</th>
+                <th>Картинка</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let action of actionsAdmin; let i = index">
+                <td>{{action.title | slice:0:17}} <span *ngIf="action.title.length > 18">...</span></td>
+                <td>{{action.main_title | slice:0:17}} <span *ngIf="action.main_title.length > 18">...</span> </td>
+                <td>{{action.path | slice:0:17}} </td>
+                <td>{{action.description | slice:0:17}}...</td>
+                <td class="img-action">
+                    <img src={{action.image}} alt="">
+                </td>
+                <td>
+                    <div><button (click)="editItem(action)">Редагувати</button></div>
+                    <div><button (click)="deleteActions(action.id)">Видалити</button></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>

@@ -1,0 +1,84 @@
+<header>
+  <div class="header-inner">
+  <div class="header-logo">
+    <a  routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <img class="img-logo" src="https://firebasestorage.googleapis.com/v0/b/mono-project-35634.appspot.com/o/images%2Flogo.svg?alt=media&token=aa8951c1-d5ec-48c3-b8a8-a5e3b33a595f" alt="">
+  </a></div>
+  <div class="header-nav">
+    <nav>
+      <ul class="main-menu">
+        <li class="action">
+          <a  routerLink="/discount/" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <div class="action-inner">
+            <img class="icon-category" src="https://firebasestorage.googleapis.com/v0/b/mono-project-35634.appspot.com/o/images%2Fnav-img-gift.svg?alt=media&token=5d5faa46-835e-408d-b0f5-0c5ba8095e9a" alt="">
+              <p>Акції</p>
+          </div>
+        </a> </li>
+        <li class="rolls" *ngFor="let category of categoryArray">
+          <a  routerLink="/product-category/{{category.path}}" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <div class="rolls-inner">
+            <img class="icon-category" src="{{category.img}}" alt="">
+         <p>{{category.title}}</p>
+          </div></a>
+        </li>
+      </ul>
+    </nav>
+    </div>
+    <div class="burger-menu">
+      <button class="burger-menu-inner " type="button" (click)="openMenu()">
+        <span class="burger-menu-line"></span>
+        <span class="burger-menu-line"></span>
+        <span class="burger-menu-line"></span>
+    </button> </div>
+
+    <div class="header-callback" (click)="showCallBackForm()" >
+      <div><img src="https://firebasestorage.googleapis.com/v0/b/mono-project-35634.appspot.com/o/images%2Fphone.svg?alt=media&token=b4bdddaf-0b1b-4141-8f70-95f3be1a0ea1" alt="">
+      </div>
+    </div>
+
+     <div class="contacts">
+      <p class="contacts-number"><b>+380978780837</b></p>
+      <p>Працюємо з <b>11</b> до <b>22:30</b></p>
+    </div>
+    <div class="user" *ngIf="!isLogin" >
+      <a (click)="openLoginDialog()" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <img class="main-icon" src="https://firebasestorage.googleapis.com/v0/b/mono-project-35634.appspot.com/o/images%2Fuser.svg?alt=media&token=5b5a771e-7933-4d4a-b7af-0d59408ddc8a" alt="">
+    </a></div>
+    <button class="user" *ngIf="isLogin && !isAdmin" (click)="openUserWindow()">
+      <img class="user-icon" src="https://firebasestorage.googleapis.com/v0/b/mono-project-35634.appspot.com/o/images%2Fuser.svg?alt=media&token=5b5a771e-7933-4d4a-b7af-0d59408ddc8a" alt="">
+    </button>
+    <ng-container class="for-user" *ngIf="isUser" >
+      <div class="user-option">
+        <a class="option option-1"  routerLink="/profile/" routerLinkActive="active" ariaCurrentWhenActive="page">Особисті дані</a>
+        <a class="option option-1" routerLink="/profile/history" routerLinkActive="active" ariaCurrentWhenActive="page">Історія замовлень</a>
+        <button (click)="userOut()" class="option btn-user">Вихід</button>
+      </div>
+    </ng-container>
+    <div class="title-admin"  *ngIf="isAdmin">
+      <a  routerLink="/admin-component" routerLinkActive="active" ariaCurrentWhenActive="page">Admin</a>
+    </div>
+    <div class="basket" (click)="openBasket()">
+      <img class="basket-icon" src="https://firebasestorage.googleapis.com/v0/b/mono-project-35634.appspot.com/o/images%2Fbasket.svg?alt=media&token=a92d4aef-b5a1-48f8-8e50-f6e18d0d6efd" alt="">
+    <span class="total">{{total}}</span>
+    </div>
+</div>
+</header>
+<ng-container  *ngIf="isBurgerMenu" >
+<div class="second-menu">
+  <button  class="close-menu" (click)="closeMenu()" >X</button>
+  <a  routerLink="/delivery" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <p class="menu-active">Доставка та оплата</p>
+  </a>
+  <a  routerLink="/about-us" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <p class="menu-active">Про нас </p>
+  </a>
+  <a  routerLink="/actions" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <p class="menu-active">Акції на суші</p>
+  </a>
+
+</div>
+</ng-container>
+
+
+
+

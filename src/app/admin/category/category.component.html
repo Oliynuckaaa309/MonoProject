@@ -1,0 +1,42 @@
+<div class="admin-result">
+    <button class="add-category" (click)="addCategoryAction()">Додати категорію</button>
+    <ng-container *ngIf="addCategory" class="add-item">
+        <form  class="action-item" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+            <input type="text" placeholder="Назва" id="name" formControlName="title" >
+            <input type="text" placeholder="Шлях" id="path" formControlName="path" >
+            <ng-container *ngIf="!isUploaded"> <input type="file"  id="file" aria-label="Вибрати файл" (change)="upload($event)"  formControlName="img"></ng-container>
+            <ng-container *ngIf="isUploaded">
+                <img [src]="valueByControl('img')" alt="" height="100px"><br/>
+                </ng-container>
+            <div >
+                <button class="btn-category" type="submit" *ngIf="!isEdit" (click)="createCategory()">Зберегти</button>
+                <button class="btn-category" type="submit"  *ngIf="isEdit" (click)="saveChanges()">Редагувати</button>
+            </div>
+        </form>
+    </ng-container>
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Назва</th>
+                <th>Шлях</th>
+                <th>Картинка</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let item of categoryForAdmin; let i = index;">
+                <td>{{i+1}}.</td>
+                <td>{{item.title}}</td>
+                <td>{{item.path}}</td>
+                <td>
+                    <img src={{item.img}} alt="">
+                </td>
+                <td>
+                    <div><button (click)="editItem(item)">Редагувати</button></div>
+                    <div><button (click)="deleteItem(item.id)">Видалити</button></div>
+                </td>
+            </tr>
+         
+        </tbody>
+    </table>

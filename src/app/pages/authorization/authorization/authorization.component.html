@@ -1,0 +1,13 @@
+<div class="overlay">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <h1>Вхід в кабінет</h1>
+        <div class="inner">
+      <input type="email" id="email" formControlName="email" placeholder="Email" />
+      <input type="password" autocomplete="on" name="password" id="password" formControlName="password" placeholder="Password" />
+      <button type="submit" (click)="logIn()" [disabled]="registrationForm.invalid"><h4>Увійти у кабінет</h4></button>
+    </div>
+    
+</form>
+   
+  </div>
+  

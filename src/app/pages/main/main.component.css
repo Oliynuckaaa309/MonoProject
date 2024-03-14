@@ -1,0 +1,270 @@
+header{
+    width: 100%;
+}
+.header-inner{
+    display: flex;
+    height: 100px;
+    max-width: 100%;
+    margin: auto;
+}
+.header-nav{
+  width: 40%;
+}
+.icon-category{
+  text-align: center;
+  height: 40px;
+}
+
+.main-menu{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.header-logo{
+    height: auto;
+    width: 20%;
+    background-color:#b5d8f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.title-admin{
+    height:100% ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.title-admin>a{
+    color: black;
+    font-size: 20px;
+    padding-right: 10px;
+}
+.user{
+    border: none;
+    z-index: 2;
+}
+.option{
+    color: black;
+    font-weight: bold;
+
+}
+.option-1{
+    line-height: 40px;
+}
+.btn-user{
+    border: 1px solid black;
+    background-color: #b5d8f7;
+    width: 35%;
+    padding: 5px;
+    margin: 15px 0px 20px 0px;
+}
+.btn-user:hover{
+    background-color: white;
+}
+.user-option{
+    background-color:white;
+    position: absolute;
+    top: 15px;
+    right: 70px;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    min-height: 100px;
+    z-index: 1;
+    padding: 60px 0px 0px 20px;
+    border: 3px solid #b5d8f7 ;
+}
+.user-log{
+    background-color: white;
+  margin-bottom:20px ;
+}
+.total{
+    background-color: white;
+    display: block;
+    border-radius: 10px;
+    position: relative;
+    top: -10%;
+    left: 0;
+
+}
+.header-nav{
+    width: 35%;
+
+}
+.sets-inner-photo{
+    margin-top: -3px;
+}
+
+a{
+    text-decoration: none;
+}
+p{
+    color: black;
+   font-weight: bolder;
+
+}
+li{
+    width: 20%;
+    list-style-type: none;
+}
+.burger-menu{
+    height: 10%;
+
+}
+.burger-menu-inner{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.burger-menu{
+  padding: 30px ;
+}
+.user-option{
+  margin-top: 20px;
+}
+.main-icon{
+  padding: 15px 0px 0px 10px;
+}
+.burger-menu-line {
+  width: 100%;
+  height: 3px;
+  background-color: black;
+}
+.header-callback{
+    background-color:#b5d8f7 ;
+    height: 55%;
+     margin: 15px 15px 15px 15px;
+    display: flex;
+    padding: 5px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.callback-title{
+    font-size: 8px;
+    padding-left: 5px;
+    padding-top: 7px;
+    font-weight: 700;
+}
+.contacts{
+    padding: 10px ;
+    text-align: center;
+}
+.contacts-number{
+    padding-left: 10px;
+}
+.user{
+   padding: 15px;
+   margin-right: 20px;
+   background-color: white;
+}
+.basket{
+    background-color:#b5d8f7 ;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+     justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.second-menu{
+    width: 15%;
+    height: 200px;
+    border: 1px solid #b5d8f7;
+    background-color: white;
+    padding: 20px;
+    position: absolute;
+    top: 5px;
+    left: 45%;
+}
+.close-menu{
+    border: none;
+    background-color: white;
+}
+.menu-active{
+    padding-top: 15px;
+}
+
+@media screen and (max-width: 600px) {
+/*.header-inner{*/
+/*max-width: 550px;*/
+/*margin: auto;*/
+/*}*/
+
+    .contacts{
+        display: none;
+    }
+
+    .header-nav{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff; /* ваш фон */
+        padding: 10px; /* ваш відступ */
+        border-top: 1px solid #ccc; /* ваша верхня межа */
+    }
+    .hamburger-menu{
+        padding-left: 15px;
+    }
+    .basket{
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .second-menu{
+        position: absolute;
+        top: 5px;
+        left: 30%;
+        width: 30%;
+        }
+  }
+  @media screen and ( max-width:992px) {
+    .header-logo{
+        width: 30%;
+    }
+    .contacts{
+        display: none;
+    }
+    .header-nav{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff; /* ваш фон */
+        padding: 10px; /* ваш відступ */
+        border-top: 1px solid #ccc; /* ваша верхня межа */
+    }
+    .hamburger-menu{
+        padding-left: 15px;
+    }
+
+    .second-menu{
+    position: absolute;
+    top: 5px;
+    left: 30%;
+    width: 30%;
+    }
+  }

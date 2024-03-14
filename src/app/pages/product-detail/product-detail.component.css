@@ -1,0 +1,133 @@
+.main-wrap{
+    width: 100%;
+    max-width: 1750px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+}
+.container{
+    width: 100%;
+    margin: auto;
+
+}
+.product-card{
+   max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    padding: 20px 0px 0px 20px;
+}
+.product-img{
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+}
+img{
+    width: 80%;
+}
+.product-name{
+    font-size: 36px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+.product-title{
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+}
+span{
+    color: #b5d8f7;
+    font-size: 22px;
+    font-weight: bold;
+}
+.order:hover{
+    background-color: white;
+    transition: 0.3s;
+}
+.price-and-buttons{
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+}
+button{
+    border: none;
+    background-color: white;
+}
+.btn-order{
+    display: flex;
+    border: 1px solid rgb(146, 145, 145);
+    background-color: white;
+    width: 30%;
+    justify-content: center;
+    height: 40px;
+    border-radius: 7px;
+    text-align: center;
+    margin: 0px 15px 0px 15px;
+   
+}
+.count-btn{
+width: 30%;
+font-size: 20px;
+border-radius: 5px;
+}
+.count-btn:hover{
+background-color: #b5d8f7;
+transition: 0.3s;
+}
+.order{
+    width: 30%;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #b5d8f7;
+    font-weight: bold;
+    border: 2px solid #b5d8f7;
+}
+.product-price{
+    padding-top: 10px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.count{
+   width: 30%;
+   border: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
+   padding-left: 15px;
+
+}
+.roll-description{
+    width: 50%;
+    height: 70px;
+    font-size: 16px;
+    display: block;
+    padding-top: 8px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.order:hover{
+    background-color: white;
+    transition: 0.3s;
+}
+.btn{
+    display: flex;
+    margin-top: 10px;
+}
+.product-info{
+    width: 50%;
+}
+@media screen and (max-width: 899px){
+    .product-card{
+    flex-direction: column;
+    }
+    .product-info, .product-img{
+        width: 100%;
+        margin: auto;
+    }
+    
+
+}

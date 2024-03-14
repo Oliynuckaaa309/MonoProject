@@ -1,0 +1,127 @@
+section{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.container{
+    max-width: 1750px;
+    padding: 0px 15px;
+    
+}
+.container-inner{
+    max-width: 960px;
+    margin: 20px auto;
+   
+}
+.container-about{
+    min-width: 30%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    
+    font-size: 34px;
+}
+h2{
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    
+}
+.introduce{
+    max-width: 991px;
+    margin: auto;
+    min-height: 330px;
+    
+
+}
+.about-us{
+    color:#5a5a5a;
+    font-size: 18px;
+    padding-top: 20px;
+    line-height: 25px;
+    display: flex;
+    justify-content: center;
+}
+ .introduce-main{
+    display: flex;
+    justify-content: space-between;
+    max-width: 992px;
+    
+} 
+.introduce-img{
+   width: 60%;
+   height: 350px;
+}
+img{
+    display: block;
+    width: 75%;
+    height: 100%;
+    border-radius: 7px;
+    margin-left: 15%;
+}
+h1{
+    font-size: 32px;
+}
+.introduce-title{
+  max-width: 35% ;
+  margin: 50px  0px 0px -20px;
+}
+.introduce-title2{
+    margin: 0px 70px;
+}
+.section3{
+    margin-top: 20px;
+}
+.icon{
+    width: 50px;
+    height: 50px;
+}
+.advantage{
+    width: 33%;
+    text-align: center;
+   
+}
+.advantage-all{
+    display: flex;
+    margin-top: 30px;
+
+}
+.advantage-icon{
+    background-color: #b5d8f7;
+    height: 60px;
+    width: 25%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+h3{
+    padding-top: 10px;
+}
+@media screen and (min-width: 601px) and (max-width: 900px){
+    .introduce{
+        width: 100%;
+    }
+    .introduce-main{
+        display: flex;
+        flex-direction: column;
+       justify-content: center;
+    }
+    .introduce-title{
+        min-width: 400px;
+        margin: auto;
+        margin-top: 10px;
+    }
+    .introduce-img{
+        width: 90%;
+    }
+    .advantage-all{
+        width: 100%;
+        flex-direction: column;
+    }
+    .advantage{
+        width: 100%;
+    }
+}

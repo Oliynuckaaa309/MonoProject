@@ -1,0 +1,17 @@
+<section>
+    <div class="main-wrap">
+        <div class="inner-content">
+            <div class="inner-item">
+                <div class="item-tab">
+                    <a  routerLink="/profile/info" routerLinkActive="active" ariaCurrentWhenActive="page">Особисті дані</a> 
+                    <a  routerLink="/profile/history" routerLinkActive="active" ariaCurrentWhenActive="page">Історія Замовлень</a>
+                    <a  routerLink="/profile/password" routerLinkActive="active" ariaCurrentWhenActive="page">Зміна паролю</a>  
+                </div>
+                <div class="item-result">
+                    <router-outlet></router-outlet>
+                </div>
+                  
+            </div>
+        </div>
+    </div>
+</section>

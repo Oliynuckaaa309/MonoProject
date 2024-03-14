@@ -1,0 +1,34 @@
+.main-wrap{
+    max-width: 1750px;
+    margin: auto;
+}
+.inner-content{
+    max-width: 992px;
+    margin: auto;
+}
+.inner-item{
+    display: flex;
+    margin-top: 60px;
+    
+}
+.item-tab{
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+    color:rgb(92, 89, 89);
+    display: block;
+    font-size: 18px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.active{
+    font-weight: bold;
+    color: black;
+    border-top: 4px solid  #b5d8f7;
+}
+.item-result{
+    padding-left: 60px
+}

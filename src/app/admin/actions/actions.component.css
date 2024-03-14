@@ -1,0 +1,93 @@
+table {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    border-collapse: collapse;
+}
+
+thead,
+tr {
+    height: 70px;
+    border-top: 1px solid rgb(154, 156, 156);
+    border-bottom: 1px solid rgb(154, 156, 156);
+}
+
+td, th {
+    text-align: center;
+    border: none;
+    vertical-align: middle;
+    min-width: 150px;
+}
+
+.btn-save{
+    border: none;
+    background-color:#b5d8f7 ;
+    color:black;
+    display: block;
+   
+    width: 40%;
+    height: 60px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+button{
+    color: #b5d8f7;
+    background-color: white;
+    border: none;
+    font-weight: bold;
+}
+button:hover{
+    text-decoration: underline;
+}
+.add-actions{
+    width: 20%;
+    background-color: #b5d8f7;
+    color: black;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.action-item{
+    width: 50%;
+}
+#name, #path{
+    width: 100%;
+    padding-left: 10px;
+    height: 50px;
+    font-size: 14px;
+    margin-top: 7px;
+}
+.add-item{
+    display: block;
+
+}
+#description{
+    width: 100%;
+    height: 100px;
+    padding-left: 10px;
+    margin-top: 7px;
+}
+#file{
+    margin-top: 7px;
+}
+.btn-action{
+    font-size: 14px;
+    display: block;
+    width: 40%;
+    height: 50px;
+    margin-top: 10px;
+    background-color: #b5d8f7;
+    color: black;
+    font-weight: bold;
+    
+}
+.img-action{
+    width: 10%;
+}
+img{
+    width: 90%;
+    height: 90%;
+}

@@ -1,0 +1,17 @@
+<section class="admin">
+    <div class="container">
+        <div class="inner-container">
+            <div class="admin-panel">
+                <div class="admin-category">
+                    <a  routerLink="/admin-component/actions-admin" routerLinkActive="active" ariaCurrentWhenActive="page">Акції</a>
+                    <a  routerLink="/admin-component/category" routerLinkActive="active" ariaCurrentWhenActive="page">Категорії</a>
+                    <a  routerLink="/admin-component/products" routerLinkActive="active" ariaCurrentWhenActive="page">Товари</a>
+                    <a  routerLink="/a" routerLinkActive="active" ariaCurrentWhenActive="page">Замовлення</a>
+                    <button  class="admin-out" (click)="logOut()">Вихід</button>
+                </div>
+               <router-outlet>
+                </router-outlet>
+                 </div>
+            </div>
+        </div> 
+</section>

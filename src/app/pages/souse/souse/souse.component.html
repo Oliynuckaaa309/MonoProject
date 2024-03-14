@@ -1,0 +1,30 @@
+<section>
+    <div class="main-wrap">
+        <div class="product-wrap">
+        <div class="product-title">
+            <h1>Соуси</h1>
+            </div></div>
+        <div class="container">
+            <div class="product-item" *ngFor="let itemSouse of souse">
+                <a [routerLink]="['/product', itemSouse.path]">
+                <div class="for-img">
+                    <img src={{itemSouse.img}} alt="">
+                </div>
+                  <h2>{{itemSouse.name}}</h2>
+                <h4 class="product-weight">{{itemSouse.weight}} л</h4>
+            </a>
+                <div class="btn">
+                    <div class="product-price"><b>{{itemSouse.price * itemSouse.count}}</b> грн</div>
+                    <div class="btn-order">
+                        <button class="count-btn" (click)="productCount(itemSouse, false)">-</button>
+                        <input type="text" class="count" [value]="itemSouse.count">
+                        <button class="count-btn" (click)="productCount(itemSouse, true)">+</button>
+                    </div>
+                    <button class="order" (click)="addToBasket(itemSouse)">ЗАМОВИТИ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
