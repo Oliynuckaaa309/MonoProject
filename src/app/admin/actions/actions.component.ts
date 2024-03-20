@@ -38,11 +38,11 @@ export class ActionsComponent {
   }
   getActionsForAdmin() {
     this.data.getActions().subscribe(res => {
-      this.actionsAdmin = res;
+      this.actionsAdmin = res as actions[];
     })
   }
   deleteActions(id:any){
-    this.data.deleteAction(id).subscribe(()=>{
+    this.data.deleteAction(id).then(()=>{
       this.getActionsForAdmin();
     })
 
@@ -57,12 +57,12 @@ export class ActionsComponent {
       description: item.description,
       image:item.image
     });
-   
-      
+
+
   }
   saveChanges(){
-    
-    this.data.editAction(this.editIndex, this.actionForm.value).subscribe(()=>{
+
+    this.data.editAction(this.editIndex, this.actionForm.value).then(()=>{
       this.getActionsForAdmin();
       this.isEdit=false;
       this.actionForm.reset();
@@ -70,16 +70,17 @@ export class ActionsComponent {
   }
   createDiscount(){
     if(this.fileData === null){
-      this.data.createActions(this.actionForm.value).subscribe((data)=>{
+      this.data.createActions(this.actionForm.value).then((data)=>{
         this.getActionsForAdmin();
         this.actionForm.reset();
         this.fileData = null;
+
       });
     } else {
     this.imageServise.uploadFile('images', this.fileData.name, this.fileData).then((data => {
       let discount = this.actionForm.value;
       discount.image = data;
-      this.data.createActions(discount).subscribe((data)=>{
+      this.data.createActions(discount).then((data)=>{
         this.getActionsForAdmin();
         this.actionForm.reset();
         this.fileData = null;
@@ -87,7 +88,7 @@ export class ActionsComponent {
     })
     ).catch((error) => { console.log(error) })
   }
-    
+
   }
   addActions(): void {
     this.addAction = true;
@@ -100,7 +101,7 @@ export class ActionsComponent {
   }
   upload(event: any) {
     this.fileData = event.target.files[0];
-    
+
   }
   valueByControl(control: string): string {
     console.log('value by control ' + control)

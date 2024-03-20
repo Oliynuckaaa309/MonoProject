@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './authorization.component.html',
-  styleUrl: './authorization.component.sass'
+  styleUrl: './authorization.component.css'
 })
 export class AuthorizationComponent implements OnInit, OnDestroy {
   public registrationForm!: FormGroup;
@@ -39,32 +39,11 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
 
   }
 
-  //  ngOnInit(): void {
-  //    this.logIn();
-
-  //  }
 
   onSubmit(): void {
     console.log(this.registrationForm.value);
   }
   logIn(): void {
-    //  this.accountServise.login(this.registrationForm.value).subscribe(data=>{
-    //   console.log( data[0].role)
-
-    //   if(data){
-    //     const user=data[0];
-    //     console.log(user)
-    //     localStorage.setItem('currentUser', JSON.stringify(user));
-    //     this.accountServise.isUserLogin.next(true);
-    //     if( user.role===Role.user){
-    //       this.router.navigate( ['/profile']);
-    //     }
-    //     else if(user.role===Role.admin){
-    //       this.router.navigate( ['/admin-component']);
-    //     }
-    //   }
-    //  })
-
     const { email, password } = this.registrationForm.value;
     this.login(email, password).then(() => {
       console.log('Well done')
@@ -77,9 +56,9 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
 
   async login(email: string, password: string): Promise<any> {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
-  
+
     docData(doc(this.afs, "users", credential.user.uid)).subscribe((user) => {
-     
+
       const currentUser:any = user;
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       this.accountServise.isUserLogin.next(true);

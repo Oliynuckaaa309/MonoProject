@@ -17,7 +17,7 @@ import { SharedModule } from './shared/shared.module';
     RouterLink, RouterLinkActive, RouterOutlet, RouterModule, FooterComponent , CommonModule,
     HttpClientModule, HttpClientJsonpModule, SharedModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.sass'
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'mono-app';

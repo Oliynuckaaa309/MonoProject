@@ -8,22 +8,32 @@ import {OrderService} from '../product-info/order.service'
 export class BasketService {
   constructor(private order: OrderService) { }
   basketAction(product:IProduct){
+    console.log(product)
     let basket: Array<IProduct> = [];
 
-    if (localStorage.length > 0 && localStorage.getItem("basket")) {
+    if (localStorage.getItem("basket")) {
+      console.log("basketExists")
+
       basket = JSON.parse(localStorage.getItem("basket") as string)
       if (basket.some(prod => prod.id === product.id)) {
+        console.log("product exists in bucket")
+
         const index = basket.findIndex(prod => prod.id === product.id);
         basket[index].count = product.count;
       }
        else {
-         basket.push(product);
+        console.log("add new product")
+
+        basket.push(product);
        }
     }
      else {
+      console.log("no bucket in storage")
+
       basket.push(product);
      }
-     localStorage.setItem('basket', JSON.stringify(basket))
+    console.log("setting basket in local storage: " + JSON.stringify(basket))
+    localStorage.setItem('basket', JSON.stringify(basket))
       product.count = 1;
      this.order.changeBasket.next(true);
   }

@@ -6,7 +6,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule, Router } from
   standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
   templateUrl: './history.component.html',
-  styleUrl: './history.component.sass'
+  styleUrl: './history.component.css'
 })
 export class HistoryComponent {
 

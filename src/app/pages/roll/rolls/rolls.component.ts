@@ -11,7 +11,7 @@ import { BasketService } from '../../../service/basket/basket.service';
   standalone: true,
   imports: [CommonModule,FormsModule, RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
   templateUrl: './rolls.component.html',
-  styleUrl: './rolls.component.sass'
+  styleUrl: './rolls.component.css'
 })
 export class RollsComponent {
   public rolls:IProduct[] = [];
@@ -21,8 +21,8 @@ export class RollsComponent {
 this.loadRolls();
   }
   loadRolls(){
-    this.data.getProductsByCategory('Роли').subscribe((data)=>{
-this.rolls=data
+    this.data.getProductsByCategory('Роли').then((querySnapshot:any)=>{
+      this.rolls = querySnapshot.docs.map((document: { data: any; }) => document.data());
     })
   }
 productCount(product:IProduct, value:boolean){

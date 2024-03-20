@@ -8,13 +8,14 @@ import { ApiService } from '../../service/api.service';
 import { IProduct } from '../../shared/interfaces/product';
 import { category } from '../../shared/interfaces/category';
 import {ImageService} from '../../service/image/image.service'
+import {actions} from "../../shared/interfaces/actions";
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [FormsModule,CommonModule, RouterLink, RouterLinkActive, RouterOutlet, RouterModule, ReactiveFormsModule],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.sass'
+  styleUrl: './products.component.css'
 })
 export class ProductsComponent {
   public addProduct:boolean=false;
@@ -32,13 +33,13 @@ export class ProductsComponent {
     this.productForm = this.fb.group({
       category: ['', Validators.required],
       name: ['', Validators.required],
-      path: ['', Validators.required], 
-      description: ['',], 
-      weight: ['', Validators.required], 
-      price: ['', Validators.required], 
-      imagePath:['', Validators.required], 
+      path: ['', Validators.required],
+      description: ['',],
+      weight: ['', Validators.required],
+      price: ['', Validators.required],
+      imagePath:['', Validators.required],
       count:[1]
-  
+
     })
   }
   addProducts(){
@@ -50,7 +51,7 @@ export class ProductsComponent {
   }
   createProduct(){
     if(this.fileData===null){
-      this.data.createProduct(this.productForm.value).subscribe((data)=>{
+      this.data.createProduct(this.productForm.value).then((data)=>{
     this.loadProducts();
     this.productForm.reset();
     this.fileData=null;
@@ -60,7 +61,7 @@ export class ProductsComponent {
       this.imageService.uploadFile('images', this.fileData.name, this.fileData).then((data => {
         let product = this.productForm.value;
         product.img = data;
-        this.data.createProduct(product).subscribe((data)=>{
+        this.data.createProduct(product).then((data)=>{
           this.loadProducts();
           this.productForm.reset();
           this.fileData = null;
@@ -69,21 +70,21 @@ export class ProductsComponent {
       })
       ).catch((error) => { console.log(error) })
     }
-   
+
 
   }
   loadCategories(){
-    this.data.getCategory().subscribe((data)=>{
-       this.adminCategory=data;
+    this.data.getFireBaseCategory().subscribe((data)=>{
+       this.adminCategory=data as category[] ;
        this.productForm.patchValue({
         category: this.adminCategory[0].id
        })
-      
+
   })
   }
   loadProducts(){
     this.data.getProducts().subscribe((data)=>{
-      this.adminProducts=data;
+      this.adminProducts=data as IProduct[];
   })
   }
   changeCategory(category:any){
@@ -99,15 +100,15 @@ export class ProductsComponent {
   this.productForm.patchValue({
     category:product.category,
     name: product.name,
-      path: product.path, 
-      description: product.description, 
-      weight: product.weight, 
-      price:product.price, 
-      img:product.img, 
+      path: product.path,
+      description: product.description,
+      weight: product.weight,
+      price:product.price,
+      img:product.img,
       count:[1]
   })  }
   saveChanges(){
-    this.data.updateProduct(this.currentId,this.productForm.value).subscribe(()=>{
+    this.data.updateProduct(this.currentId,this.productForm.value).then(()=>{
       this.loadProducts();
       this.productForm.reset();
       this.isEdit=false;
@@ -117,7 +118,7 @@ export class ProductsComponent {
 
   }
   deleteProduct(id:any){
-    this.data.deleteProduct(id).subscribe(data=>{
+    this.data.deleteProduct(id).then(data=>{
       this.loadProducts();
       this.isEdit=false;
     this.productForm.reset()
@@ -129,7 +130,7 @@ export class ProductsComponent {
   }
   valueByControl(control:string){
       return this.productForm.get(control)?.value;
-    
+
   }
 
 }

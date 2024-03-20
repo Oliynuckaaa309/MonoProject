@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule, Router } from
   standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.sass'
+  styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
 

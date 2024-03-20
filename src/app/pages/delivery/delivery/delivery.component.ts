@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './delivery.component.html',
-  styleUrl: './delivery.component.sass'
+  styleUrl: './delivery.component.css'
 })
 export class DeliveryComponent {
 

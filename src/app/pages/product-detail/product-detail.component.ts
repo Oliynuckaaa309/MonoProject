@@ -13,7 +13,7 @@ import { BasketService } from '../../service/basket/basket.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.sass'
+  styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
   public productPath!: string;
@@ -28,9 +28,9 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
       this.productPath = param.get('path') as string;
-      this.data.getOneProductByPath(this.productPath).subscribe(
+      this.data.getOneProductByPath(this.productPath).then(
         (res) => {
-          this.productDetails = res[0];
+          this.productDetails = res.docs[0].data() as IProduct;
         }
       )
     })

@@ -8,9 +8,9 @@ import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule } from '@angul
 @Component({
   selector: 'app-action',
   standalone: true,
-  imports: [FormsModule,  CommonModule,RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
+  imports: [FormsModule,  CommonModule, RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
   templateUrl: './action.component.html',
-  styleUrl: './action.component.sass'
+  styleUrl: './action.component.css'
 })
 export class ActionComponent {
   public actionArray:actions[]=[];
@@ -20,10 +20,7 @@ export class ActionComponent {
   }
   getActions(){
     this.data.getActions().subscribe(item=>{
-    this.actionArray=item;
-   
-    
-     
+    this.actionArray=item as actions[];
     })
   }}
 

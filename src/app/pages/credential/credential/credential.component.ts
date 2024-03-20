@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './credential.component.html',
-  styleUrl: './credential.component.sass'
+  styleUrl: './credential.component.css'
 })
 export class CredentialComponent {
 

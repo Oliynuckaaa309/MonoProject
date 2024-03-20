@@ -5,9 +5,9 @@ import { RollsComponent } from '../../roll/rolls/rolls.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RollsComponent,RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
+  imports: [RollsComponent, RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.sass'
+  styleUrl: './home.component.css'
 })
 export class HomeComponent {
 

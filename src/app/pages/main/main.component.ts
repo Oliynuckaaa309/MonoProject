@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Storage, getDownloadURL, percentage, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule, Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
 import { subscribe } from 'diagnostics_channel';
@@ -36,8 +35,8 @@ export class MainComponent {
    public isAdmin: boolean=false;
    public isUser:boolean=false;
   constructor(private fb: FormBuilder,
-     public data: ApiService, 
-     public order: OrderService, 
+     public data: ApiService,
+     public order: OrderService,
      public account:AccountService,
      public router:Router,
      public dialog: MatDialog) {
@@ -69,12 +68,11 @@ export class MainComponent {
       return total + (prod.count * prod.price);
     }, 0);
   }
-  
-  getCategories() {
-    this.data.getCategory().subscribe(category => {
-      this.categoryArray = category;
 
-    }
+  getCategories() {
+    this.data.getFireBaseCategory().subscribe(category => {
+        this.categoryArray = category as category[];
+      }
     )
 
   }
@@ -97,14 +95,14 @@ export class MainComponent {
       this.loadBasket();
     })
   }
-  
+
    checkUserLogin():void{
     const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
     if(currentUser){
       this.isLogin=true;
       if (currentUser.role === Role.admin) {
                this.isAdmin = true;
-        } 
+        }
     } else {
       this.isLogin = false;
       this.isAdmin = false;
@@ -125,8 +123,8 @@ export class MainComponent {
   openBasket(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.position = {
-      top: '75px',    
-      right:'0px'   
+      top: '75px',
+      right:'0px'
     };
     this.dialog.open(BasketComponent, dialogConfig)
     };

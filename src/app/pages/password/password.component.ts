@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './password.component.html',
-  styleUrl: './password.component.sass'
+  styleUrl: './password.component.css'
 })
 export class PasswordComponent {
 

@@ -2,7 +2,7 @@
    <div class="goods-item" *ngIf="basket.length>=1">
       <div class="items" *ngFor="let item of basket, let i=index">
          <div class="good-img">
-         <img src={{item.img}} alt="">
+         <img class="good-card" src={{item.img}} alt="">
       </div>
       <div class="item-name"><h4>{{item.name}}</h4></div>
       <div class="btn">
@@ -11,12 +11,12 @@
              <input type="text" class="count" value="1" [value]="item.count">
              <button  class="count-btn"  (click)="productCount(item, true)" >+</button>
          </div>
-        <div class="item-price"><p><b>{{item.price * item.count}}</b> грн</p></div> 
+        <div class="item-price"><p><b>{{item.price * item.count}}</b> грн</p></div>
           <div>
             <button class="btn-delete" (click)="deleteItem(i)">
                <img class="icon-trash" src="https://firebasestorage.googleapis.com/v0/b/mono-project-35634.appspot.com/o/images%2F%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F.png?alt=media&token=46872fa5-57e1-4edb-9299-6276405b2338" alt="">
                </button>
-            </div>   
+            </div>
      </div>
    </div>
    </div>
@@ -37,6 +37,6 @@
             <h3>Оформити замовлення</h3>
          </div>
       </div>
-    
+
    </div>
 </div>

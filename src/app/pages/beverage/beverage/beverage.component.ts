@@ -11,7 +11,7 @@ import { BasketService } from '../../../service/basket/basket.service';
   standalone: true,
   imports: [FormsModule , CommonModule, RouterLink, RouterLinkActive, RouterOutlet, RouterModule],
   templateUrl: './beverage.component.html',
-  styleUrl: './beverage.component.sass'
+  styleUrl: './beverage.component.css'
 })
 export class BeverageComponent {
   public beverage:IProduct[]=[];
@@ -21,9 +21,8 @@ ngOnInit(){
   this.loadBeverage()
 }
 loadBeverage(){
-  this.data.getProductsByCategory("Напої").subscribe((res)=>{
-this.beverage=res;
-console.log(this.beverage)
+  this.data.getProductsByCategory('Напої').then((querySnapshot:any)=>{
+    this.beverage = querySnapshot.docs.map((document: { data: any; }) => document.data());
   })
 }
 productCount(product:IProduct, value:boolean){
@@ -31,6 +30,5 @@ productCount(product:IProduct, value:boolean){
 }
 addToBasket(beverage:IProduct){
   this.basketServise.basketAction(beverage);
-
 }
 }

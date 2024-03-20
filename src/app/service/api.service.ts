@@ -3,69 +3,108 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { actions} from '../shared/interfaces/actions';
-import { category } from '../shared/interfaces/category';
-import { CategoryComponent } from '../admin/category/category.component';
+import {category, categoryResponse} from '../shared/interfaces/category';
 import { IProduct, IProductResponse } from '../shared/interfaces/product';
+import {
+  query,
+  where,
+  addDoc,
+  collectionData,
+  Firestore,
+  getDocs,
+  doc,
+  updateDoc,
+  deleteDoc
+} from "@angular/fire/firestore";
+import {AngularFirestore, CollectionReference} from "@angular/fire/compat/firestore";
+ import { DocumentData, collection, DocumentReference} from "@firebase/firestore";
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-public api={
- category:'http://localhost:3000/category',
- actions:'http://localhost:3000/actions', 
- products:'http://localhost:3000/products', 
-}
-  constructor(private  http:HttpClient) { }
-  getActions():Observable<actions[]>{
-    return this.http.get<actions[]>(this.api.actions);
+  private categoryCollection!: CollectionReference<DocumentData>;
+  private actionsCollection!: CollectionReference<DocumentData>;
+  private productsCollection!: CollectionReference<DocumentData>;
+  private oneCollection!: CollectionReference<DocumentData>;
+  constructor(private  http:HttpClient,
+              private afs:Firestore) {
+
+    // @ts-ignore
+    this.categoryCollection=collection(this.afs, 'categories') ;
+    // @ts-ignore
+    this.actionsCollection=collection(this.afs, 'action');
+    // @ts-ignore
+    this.productsCollection=collection(this.afs, 'products');
+    // @ts-ignore
+
   }
-  getProducts():Observable<IProduct[]>{
-    return this.http.get<IProductResponse[]>(this.api.products);
+
+  getActions(){
+    // @ts-ignore
+    return collectionData(this.actionsCollection, {idField:'id'})
   }
-  getProductsByCategory(name:string):Observable<IProduct[]>{
-    return this.http.get<IProductResponse[]>(`${this.api.products}?category=${name}`);
+  getOneActiontByPath(path:string){
+    const q = query(this.actionsCollection, where("path", "==", path));
+    return getDocs(q);
   }
-  getOneProduct(id:number):Observable<IProduct>{
-    return  this.http.get<IProduct>(`${this.api.products}/${id}`);
+
+  createActions(action:actions){
+    return addDoc(this.actionsCollection, action)
   }
-  getOneProductByPath(path:string | null):Observable<IProduct[]>{
-    return  this.http.get<IProduct[]>(`${this.api.products}?path=${path}`);
+
+  editAction(id:any, action:actions){
+    // return this.http.patch<actions[]>(`${this.api.actions}/${id}`,action)
+    const actionReferences= doc(this.afs,`action/${id}` );
+    return updateDoc(actionReferences, {...action});
   }
-  getOneActiontByPath(path:string):Observable<actions[]>{
-    return  this.http.get<actions[]>(`${this.api.actions}?path=${path}`);
+  deleteAction(id:string){
+    const actionReferences= doc(this.afs,`action/${id}` );
+    return deleteDoc(actionReferences);
+
   }
-  createProduct(product:IProduct):Observable<IProduct>{
-    return this.http.post<IProduct>(this.api.products, product);
+  getProducts(){
+    // @ts-ignore
+    return collectionData(this.productsCollection, {idField:'id'})
+
   }
-  updateProduct(id:any, product:IProduct):Observable<IProductResponse> {
-    return this.http.patch<IProductResponse>(`${this.api.products}/${id}`, product);
+  getProductsByCategory(name:string){
+    const q = query(this.productsCollection, where("category", "==", name));
+    return getDocs(q);
+  }
+
+  getOneProductByPath(path:string | null){
+    const q = query(this.productsCollection, where("path", "==", path));
+    return getDocs(q);  }
+
+  createProduct(product:IProduct){
+    return addDoc(this.productsCollection, product)
+  }
+  updateProduct(id:any, product:IProduct) {
+    const productsReferences= doc(this.afs,`products/${id}` );
+    return updateDoc(productsReferences, {...product});
   }
   deleteProduct(id:any){
-    return this.http.delete( `${this.api.products}/${id}` );
+    const productsReferences= doc(this.afs,`products/${id}` );
+    return deleteDoc( productsReferences);
+
   }
-  deleteAction(id:string):Observable<void>{
-    return this.http.delete<void>(`${this.api.actions}/${id}`);
-  
-  }
-  getCategory():Observable<category[]>{
-    return this.http.get<category[]>(this.api.category);
-  }
-  deleteCategory(id:any):Observable<void>{
-    return this.http.delete<void>(`${this.api.category}/${id}`);
+
+
+  deleteCategory(id:any){
+    const categoryReferences= doc(this.afs,`categories/${id}` );
+    return deleteDoc(categoryReferences, );
+
 
 }
-createCategory(category:category):Observable<category>{
-  return this.http.post<category>(this.api.category,category);
+  editCategory(id:any, category:category){
+    const categoryReferences= doc(this.afs,`categories/${id}` );
+    return updateDoc(categoryReferences, {...category});
+  }
+  createFireBaseCategory(category:category){
+    return addDoc(this.categoryCollection, category)
+  }
+getFireBaseCategory(){
+    // @ts-ignore
+  return collectionData(this.categoryCollection, {idField:'id'})
 }
-
-createActions(action:actions):Observable<actions>{
-  return this.http.post<actions>(this.api.actions,action );
-}
-editCategory(id:any, category:category):Observable<category[]>{
-  return this.http.patch<category[]>(`${this.api.category}/${id}`,category)
-}
-editAction(id:any, action:actions):Observable<actions[]>{
-  return this.http.patch<actions[]>(`${this.api.actions}/${id}`,action)
-}
- 
 }

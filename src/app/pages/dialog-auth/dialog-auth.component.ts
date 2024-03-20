@@ -24,7 +24,7 @@ import {IRegister} from "../../shared/interfaces/register";
   standalone: true,
   imports: [ FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule, CommonModule],
   templateUrl: './dialog-auth.component.html',
-  styleUrl: './dialog-auth.component.sass'
+  styleUrl: './dialog-auth.component.css'
 })
 export class DialogAuthComponent implements OnInit {
   public authForm!:FormGroup;
@@ -38,7 +38,7 @@ constructor(private fb: FormBuilder,
   public dialog: MatDialog,
   private auth: Auth,
   private afs: Firestore,
-  private router: Router,
+  public router: Router,
   private acc:AccountService) {
   this.authForm=this.fb.group({
     email:[null,[Validators.required,Validators.email]],

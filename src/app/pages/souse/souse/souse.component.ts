@@ -14,20 +14,23 @@ import { BasketService } from '../../../service/basket/basket.service';
   standalone: true,
   imports: [FormsModule,CommonModule, RouterLink, RouterLinkActive, RouterOutlet, RouterModule ],
   templateUrl: './souse.component.html',
-  styleUrl: './souse.component.sass'
+  styleUrl: './souse.component.css'
 })
 export class SouseComponent {
   public souse:IProduct[]=[];
   constructor(private data:ApiService,  private countPrice:CountPriceService,
     private basketServise:BasketService){
-    
+
   }
   ngOnInit(){
    this.loadSouse();
    }
   loadSouse(){
-    this.data.getProductsByCategory("Соуси").subscribe((data)=>{
-      this.souse=data;
+    console.error("load Souce!!")
+
+    this.data.getProductsByCategory('Соуси').then((querySnapshot:any)=>{
+      console.error(JSON.stringify(querySnapshot))
+    this.souse = querySnapshot.docs.map((document: { data: any; }) => document.data());
         })
       }
       productCount(product:IProduct, value:boolean){

@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
   standalone: true,
   imports: [],
   templateUrl: './callback.component.html',
-  styleUrl: './callback.component.sass'
+  styleUrl: './callback.component.css'
 })
 export class CallbackComponent {
   constructor(public dialog:MatDialog){}

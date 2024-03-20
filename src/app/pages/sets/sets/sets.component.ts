@@ -11,7 +11,7 @@ import { BasketService } from '../../../service/basket/basket.service';
   standalone: true,
   imports: [ FormsModule, CommonModule, RouterLink, RouterLinkActive, RouterOutlet, RouterModule ],
   templateUrl: './sets.component.html',
-  styleUrl: './sets.component.sass'
+  styleUrl: './sets.component.css'
 })
 export class SetsComponent {
   public setu:IProduct[]=[];
@@ -21,9 +21,9 @@ this.loadSetu();
 
   }
   loadSetu(){
-    this.data.getProductsByCategory('Сети').subscribe((data)=>[
-      this.setu=data
-    ])
+    this.data.getProductsByCategory('Сети').then((querySnapshot:any)=>{
+      this.setu = querySnapshot.docs.map((document: { data: any; }) => document.data());
+    })
   }
   productCount(product:IProduct, value:boolean){
     this.countPrice.changeProductAmount(product, value);

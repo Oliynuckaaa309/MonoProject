@@ -12,7 +12,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule, Router } from
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet, RouterModule ],
   templateUrl: './basket.component.html',
-  styleUrl: './basket.component.sass'
+  styleUrl: './basket.component.css'
 })
 export class BasketComponent {
   public basketJson:string | null =localStorage.getItem("basket");

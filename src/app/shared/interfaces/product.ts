@@ -15,3 +15,7 @@ export interface IProduct{
 export interface IProductResponse extends  IProduct {
 id:string;
  }
+ export interface prod{
+  id:string,
+   count:number
+ }
